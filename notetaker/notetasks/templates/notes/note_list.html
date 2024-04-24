@@ -1,0 +1,60 @@
+<!-- templates/notes/note_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Note List{% endblock %}
+
+{% block content %}
+<h1>Notes</h1>
+
+<!-- Form for Searching and Filtering -->
+<form method="GET" class="mb-3">
+    <div class="form-group">
+        <label for="search">Search (Title/Content):</label>
+        <input type="text" id="search" name="search" class="form-control" value="{{ search_query }}">
+    </div>
+    <div class="form-group">
+        <label for="date_created">Date Created:</label>
+        <input type="date" id="date_created" name="date_created" class="form-control" value="{{ date_created }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Apply</button>
+</form>
+
+<!-- Notes Table -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date Created</th>
+            <th>Snippet</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for note in notes %}
+        <tr>
+            <td>
+                <a href="{% url 'note_detail' note.id %}">{{ note.title }}</a>
+            </td>
+            <td>
+                {{ note.created_at|date:"F d, Y" }}
+            </td>
+            <td>
+                {{ note.content|truncatewords:5 }}
+            </td>
+            <td>
+                <a href="{% url 'note_edit' note.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'note_delete' note.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No notes available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'note_create' %}" class="btn btn-primary mb-3">Add New Note</a>
+
+{% endblock %}
+
