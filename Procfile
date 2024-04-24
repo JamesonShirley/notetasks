@@ -1,1 +1,1 @@
-web: gunicorn notetaker
+web: gunicorn notetaker.wsgi:application
