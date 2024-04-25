@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--=*foqyo2ixzg_3nrpjb2)za1t&v^4*c+r@589_((quxhh+)c9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['notetasks.onrender.com',]
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'notetasks',
-    'notetasks.onrender.com',
 ]
 
 MIDDLEWARE = [
