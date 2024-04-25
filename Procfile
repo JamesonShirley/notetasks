@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT notetaker.wsgi:application
+web: gunicorn notetaker.wsgi
