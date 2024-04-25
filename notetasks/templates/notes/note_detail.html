@@ -1,0 +1,10 @@
+<!-- templates/notes/note_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Note Detail{% endblock %}
+
+{% block content %}
+<h1>{{ note.title }}</h1>
+<p>{{ note.content }}</p>
+<a href="{% url 'note_list' %}" class="btn btn-outline-primary">Back to list</a>
+{% endblock %}
